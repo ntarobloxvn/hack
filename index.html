@@ -498,7 +498,7 @@
       // @param var3 variable
       // @param tablenya table
       const alibi = (var1, var2, var3, tablenya) => {
-        return `_ENV={string=string,table=table,math=math,pairs=pairs,load=load,print=print};${var1}="${var2}";${var2}="${var1}";${var3}={${tablenya}};function xor(t)local ciphertext="";for i=1,#${var2} do local byte=string.byte(${var2}, i);local quibit=string.byte(${var1},(i-1)%#${var1}+1);ciphertext=ciphertext..string.char(bit.bxor(byte,quibit));end;return ciphertext;end;bit={bxor=function(a,b)local r,m=0,1;while a>0 and b>0 do local aa,bb=a%2,b%2;r=r+m*((aa+bb)%2);m=m*2;a=math.floor(a/2);b=math.floor(b/2) end;if a>0 then r=r+m*a end;if b>0 then r=r+m*b end;return r;end};xor(${var3})${ran1}z="Encrypt By Yasu";`;
+        return `_ENV={string=string,table=table,math=math,pairs=pairs,load=load,print=print};${var1}="${var2}";${var2}="${var1}";${var3}={${tablenya}};function xor(t)local ciphertext="";for i=1,#${var2} do local byte=string.byte(${var2}, i);local quibit=string.byte(${var1},(i-1)%#${var1}+1);ciphertext=ciphertext..string.char(bit.bxor(byte,quibit));end;return ciphertext;end;bit={bxor=function(a,b)local r,m=0,1;while a>0 and b>0 do local aa,bb=a%2,b%2;r=r+m*((aa+bb)%2);m=m*2;a=math.floor(a/2);b=math.floor(b/2) end;if a>0 then r=r+m*a end;if b>0 then r=r+m*b end;return r;end};xor(${var3})${ran1}z="Encrypt By NTARobloxVN";`;
       };
 
       // @return function decrypt real
