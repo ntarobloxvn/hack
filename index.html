@@ -3,345 +3,170 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NTARobloxVN</title>
+<title>Script Web</title>
 
 <style>
+
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family: "Segoe UI", Arial, sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family: "Segoe UI", sans-serif;
 }
 
 body{
-    background: linear-gradient(135deg,#0a63ff,#4aa3ff);
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:20px;
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+overflow:hidden;
+color:white;
 }
 
-/* Container */
+/* background glow animation */
+
+body::before{
+content:"";
+position:absolute;
+width:600px;
+height:600px;
+background:radial-gradient(circle,#2ea8ff,transparent 70%);
+filter:blur(120px);
+animation:float 8s infinite alternate;
+}
+
+@keyframes float{
+from{transform:translate(-200px,-200px)}
+to{transform:translate(200px,200px)}
+}
+
+/* container */
+
 .container{
-    text-align:center;
-    width:100%;
-    max-width:500px;
+width:90%;
+max-width:420px;
+text-align:center;
+padding:40px 30px;
+border-radius:20px;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(10px);
+box-shadow:
+0 10px 40px rgba(0,0,0,0.6),
+0 0 30px rgba(0,170,255,0.3);
+animation:fadeIn 1.2s ease;
 }
 
-/* Title */
-.title{
-    color:white;
-    font-size:28px;
-    font-weight:700;
-    margin-bottom:8px;
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(30px);
 }
-
-/* Subtitle */
-.subtitle{
-    color:white;
-    opacity:0.9;
-    margin-bottom:30px;
-    font-size:16px;
-}
-
-/* Card */
-.card{
-    background:white;
-    border-radius:16px;
-    padding:18px;
-    margin-bottom:18px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.15);
-    transition:transform 0.2s ease;
-}
-
-.card:hover{
-    transform:translateY(-3px);
-}
-
-/* Button */
-.download-btn{
-    display:block;
-    width:100%;
-    text-decoration:none;
-    background:#1e7cff;
-    color:white;
-    padding:14px;
-    border-radius:12px;
-    font-size:16px;
-    font-weight:600;
-    transition:all 0.25s ease;
-    box-shadow:0 4px 10px rgba(0,0,0,0.15);
-}
-
-/* Hover effect */
-.download-btn:hover{
-    background:#4091ff;
-    box-shadow:0 6px 15px rgba(0,0,0,0.25);
-}
-
-/* Mobile */
-@media(max-width:480px){
-.title{
-    font-size:22px;
-}
-
-.subtitle{
-    font-size:14px;
-}
-
-.download-btn{
-    font-size:15px;
+to{
+opacity:1;
+transform:translateY(0);
 }
 }
 
-/* ===== THÊM CODE MỚI - KHÔNG SỬA CODE GỐC ===== */
+/* title */
 
-/* Hiệu ứng nền động */
-@keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0px); }
+.main-title{
+font-size:30px;
+font-weight:700;
+margin-bottom:8px;
+letter-spacing:1px;
 }
 
-/* Thêm hiệu ứng cho container */
-.container::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%);
-    pointer-events: none;
-    z-index: -1;
+.sub{
+font-size:15px;
+opacity:0.7;
+margin-bottom:35px;
 }
 
-/* Làm đẹp title */
-.title {
-    position: relative;
-    display: inline-block;
-    padding: 0 20px 10px 20px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-    animation: float 3s ease-in-out infinite;
+/* content title */
+
+.content-title{
+font-size:22px;
+margin-bottom:25px;
+font-weight:600;
 }
 
-.title::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, white, transparent);
-    border-radius: 2px;
+/* buttons */
+
+.btn{
+display:block;
+width:100%;
+padding:16px;
+margin:12px 0;
+border:none;
+border-radius:14px;
+font-size:18px;
+font-weight:600;
+cursor:pointer;
+background:linear-gradient(135deg,#1fa2ff,#12d8fa,#a6ffcb);
+color:#0a1a25;
+box-shadow:0 8px 20px rgba(0,0,0,0.4);
+transition:all .3s ease;
 }
 
-/* Làm đẹp subtitle */
-.subtitle {
-    position: relative;
-    display: inline-block;
-    padding: 5px 15px;
-    background: rgba(255,255,255,0.1);
-    border-radius: 30px;
-    backdrop-filter: blur(5px);
-    font-weight: 500;
-    letter-spacing: 1px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    margin-bottom: 30px;
+.btn:hover{
+transform:translateY(-4px) scale(1.03);
+box-shadow:
+0 15px 35px rgba(0,0,0,0.6),
+0 0 20px rgba(0,200,255,0.8);
 }
 
-/* Thêm hiệu ứng cho card */
-.card {
-    position: relative;
-    overflow: hidden;
+.btn:active{
+transform:scale(0.96);
 }
 
-.card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-    transition: left 0.5s ease;
+/* mobile optimization */
+
+@media (max-width:480px){
+
+.main-title{
+font-size:24px;
 }
 
-.card:hover::before {
-    left: 100%;
+.content-title{
+font-size:20px;
 }
 
-.card:last-child {
-    margin-bottom: 0;
+.btn{
+font-size:16px;
+padding:14px;
 }
 
-/* Làm đẹp button */
-.download-btn {
-    position: relative;
-    overflow: hidden;
-    border: none;
-    cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.download-btn::before {
-    content: '⬇️';
-    position: absolute;
-    left: -30px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 18px;
-    opacity: 0;
-    transition: left 0.3s ease, opacity 0.3s ease;
-}
-
-.download-btn:hover::before {
-    left: 15px;
-    opacity: 1;
-}
-
-.download-btn::after {
-    content: '→';
-    position: absolute;
-    right: -30px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 18px;
-    opacity: 0;
-    transition: right 0.3s ease, opacity 0.3s ease;
-}
-
-.download-btn:hover::after {
-    right: 15px;
-    opacity: 1;
-}
-
-.download-btn:active {
-    transform: scale(0.98);
-}
-
-/* Thêm hiệu ứng ripple khi click */
-.download-btn:active::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.5);
-    transform: translate(-50%, -50%);
-    animation: ripple 0.3s ease-out;
-}
-
-@keyframes ripple {
-    0% {
-        width: 0;
-        height: 0;
-        opacity: 0.5;
-    }
-    100% {
-        width: 300px;
-        height: 300px;
-        opacity: 0;
-    }
-}
-
-/* Thêm hiệu ứng cho links */
-.download-btn {
-    background: linear-gradient(135deg, #1e7cff, #0055cc);
-}
-
-/* Làm đẹp cho màn hình mobile */
-@media (max-width: 480px) {
-    .title {
-        font-size: 22px;
-    }
-    
-    .title::after {
-        width: 40px;
-    }
-    
-    .subtitle {
-        font-size: 14px;
-        padding: 4px 12px;
-    }
-    
-    .download-btn {
-        font-size: 14px;
-    }
-    
-    .download-btn::before {
-        font-size: 14px;
-    }
-    
-    .download-btn::after {
-        font-size: 14px;
-    }
-}
-
-/* Thêm loading animation nhẹ */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.container > * {
-    animation: fadeIn 0.5s ease-out forwards;
-}
-
-.card:nth-child(3) {
-    animation-delay: 0.1s;
-}
-
-.card:nth-child(4) {
-    animation-delay: 0.2s;
-}
-
-.card:nth-child(5) {
-    animation-delay: 0.3s;
 }
 
 </style>
 </head>
+
 <body>
 
 <div class="container">
 
-<div class="title">
-TẤT CẢ NHỮNG THỨ TRÊN VIDEO
+<div class="main-title">
+SCRIPT TRÊN VIDEO
 </div>
 
-<div class="subtitle">
+<div class="sub">
 NTARobloxVN
 </div>
 
-<div class="card">
-<a class="download-btn" href="https://www.mediafire.com/file/7twidawwhbkjfzj/PunkX_VNG_64Bits-2.706.750.apk/file">
-PUNK X VNG 64 BIT
-</a>
+<div class="content-title">
+SCRIPT Ở ĐÂY
 </div>
 
-<div class="card">
-<a class="download-btn" href="https://www.mediafire.com/file/0bgcmltisj1vm89/PunkX_VNG_32Bits-2.706.750.apk/file">
-PUNK X VNG 32 BIT
-</a>
-</div>
+<button class="btn"
+onclick="window.open('https://pastefy.app/gQOsRqKh/raw')">
+Link 1
+</button>
 
-<div class="card">
-<a class="download-btn" href="https://notevn.com/share/tq8bmj5e">
-SCRIPT
-</a>
-</div>
+<button class="btn"
+onclick="window.open('https://pastefy.app/j42AOA4W/raw')">
+Link 2
+</button>
 
 </div>
 
