@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Script Web</title>
+
+<title>NTARobloxVN</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -11,53 +14,63 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family: "Segoe UI", sans-serif;
+font-family:'Poppins',sans-serif;
 }
 
 body{
 height:100vh;
 display:flex;
-align-items:center;
 justify-content:center;
-background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+align-items:center;
 overflow:hidden;
 color:white;
+background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#3a7bd5);
+background-size:400% 400%;
+animation:gradientMove 12s ease infinite;
 }
 
-/* background glow animation */
+/* Animated Gradient */
 
-body::before{
-content:"";
-position:absolute;
-width:600px;
-height:600px;
-background:radial-gradient(circle,#2ea8ff,transparent 70%);
-filter:blur(120px);
-animation:float 8s infinite alternate;
+@keyframes gradientMove{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
 }
 
-@keyframes float{
-from{transform:translate(-200px,-200px)}
-to{transform:translate(200px,200px)}
+/* Particles */
+
+#particles{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-1;
 }
 
-/* container */
+/* Container */
 
 .container{
 width:90%;
-max-width:420px;
-text-align:center;
-padding:40px 30px;
-border-radius:20px;
-background:rgba(255,255,255,0.05);
-backdrop-filter:blur(10px);
+max-width:520px;
+padding:40px 35px;
+border-radius:22px;
+
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(18px);
+
 box-shadow:
-0 10px 40px rgba(0,0,0,0.6),
-0 0 30px rgba(0,170,255,0.3);
-animation:fadeIn 1.2s ease;
+0 25px 60px rgba(0,0,0,0.45),
+inset 0 0 20px rgba(255,255,255,0.05);
+
+text-align:center;
+
+animation:fadeUp 1s ease;
 }
 
-@keyframes fadeIn{
+/* Fade animation */
+
+@keyframes fadeUp{
 from{
 opacity:0;
 transform:translateY(30px);
@@ -68,73 +81,121 @@ transform:translateY(0);
 }
 }
 
-/* title */
+/* Title */
 
-.main-title{
+.title{
 font-size:30px;
 font-weight:700;
-margin-bottom:8px;
+margin-bottom:10px;
+
+background:linear-gradient(90deg,#00dbff,#a2f7ff);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+/* Subtitle */
+
+.subtitle{
+opacity:.9;
+margin-bottom:28px;
+font-size:15px;
 letter-spacing:1px;
 }
 
-.sub{
-font-size:15px;
-opacity:0.7;
-margin-bottom:35px;
-}
+/* Link title */
 
-/* content title */
-
-.content-title{
-font-size:22px;
-margin-bottom:25px;
+.link-title{
+font-size:20px;
 font-weight:600;
+margin-bottom:20px;
 }
 
-/* buttons */
+/* Buttons */
 
 .btn{
 display:block;
 width:100%;
 padding:16px;
-margin:12px 0;
-border:none;
+
+margin:14px 0;
+
 border-radius:14px;
-font-size:18px;
+text-decoration:none;
 font-weight:600;
-cursor:pointer;
-background:linear-gradient(135deg,#1fa2ff,#12d8fa,#a6ffcb);
-color:#0a1a25;
-box-shadow:0 8px 20px rgba(0,0,0,0.4);
+letter-spacing:.6px;
+
+background:linear-gradient(135deg,#00c6ff,#0072ff);
+color:white;
+
+position:relative;
+overflow:hidden;
+
+box-shadow:
+0 10px 25px rgba(0,0,0,0.35),
+0 0 15px rgba(0,140,255,0.35);
+
 transition:all .3s ease;
 }
 
+/* Hover */
+
 .btn:hover{
-transform:translateY(-4px) scale(1.03);
+transform:scale(1.06);
 box-shadow:
-0 15px 35px rgba(0,0,0,0.6),
-0 0 20px rgba(0,200,255,0.8);
+0 15px 40px rgba(0,0,0,0.5),
+0 0 25px rgba(0,180,255,0.9);
 }
 
-.btn:active{
-transform:scale(0.96);
+/* Ripple effect */
+
+.btn span{
+position:relative;
+z-index:2;
 }
 
-/* mobile optimization */
+.btn::after{
+content:"";
+position:absolute;
+width:120px;
+height:120px;
+background:rgba(255,255,255,0.4);
+border-radius:50%;
+transform:scale(0);
+opacity:0;
+transition:.6s;
+}
 
-@media (max-width:480px){
+.btn:active::after{
+transform:scale(3);
+opacity:0;
+transition:0s;
+}
 
-.main-title{
+/* Floating */
+
+.container{
+animation:
+fadeUp 1s ease,
+floating 6s ease-in-out infinite;
+}
+
+@keyframes floating{
+0%{transform:translateY(0)}
+50%{transform:translateY(-8px)}
+100%{transform:translateY(0)}
+}
+
+/* Responsive */
+
+@media(max-width:500px){
+
+.title{
 font-size:24px;
 }
 
-.content-title{
-font-size:20px;
-}
-
 .btn{
-font-size:16px;
 padding:14px;
+font-size:14px;
 }
 
 }
@@ -144,31 +205,89 @@ padding:14px;
 
 <body>
 
+<canvas id="particles"></canvas>
+
 <div class="container">
 
-<div class="main-title">
-SCRIPT TRÊN VIDEO
+<div class="title">
+TẤT CẢ NHỮNG GÌ TRÊN VIDEO
 </div>
 
-<div class="sub">
+<div class="subtitle">
 NTARobloxVN
 </div>
 
-<div class="content-title">
-SCRIPT Ở ĐÂY
+<div class="link-title">
+LINK :
 </div>
 
-<button class="btn"
-onclick="window.open('https://pastefy.app/gQOsRqKh/raw')">
-Link 1
-</button>
+<a class="btn" href="https://www.mediafire.com/file/gi82oiy9qk0fyob/Ronix_VN-2.710.706_Up.apk/file" target="_blank">
+<span>CLIENT RONIX VNG ANDROID</span>
+</a>
 
-<button class="btn"
-onclick="window.open('https://pastefy.app/j42AOA4W/raw')">
-Link 2
-</button>
+<a class="btn" href="https://pastefy.app/bsq32wjA/raw" target="_blank">
+<span>SCRIPT TRONG VID</span>
+</a>
 
 </div>
+
+<script>
+
+/* Simple particles */
+
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles=[];
+
+for(let i=0;i<80;i++){
+
+particles.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*2,
+dx:(Math.random()-.5)*0.5,
+dy:(Math.random()-.5)*0.5
+})
+
+}
+
+function animate(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height)
+
+particles.forEach(p=>{
+
+p.x+=p.dx
+p.y+=p.dy
+
+if(p.x<0||p.x>canvas.width) p.dx*=-1
+if(p.y<0||p.y>canvas.height) p.dy*=-1
+
+ctx.beginPath()
+ctx.arc(p.x,p.y,p.r,0,Math.PI*2)
+ctx.fillStyle="rgba(255,255,255,0.6)"
+ctx.fill()
+
+})
+
+requestAnimationFrame(animate)
+
+}
+
+animate()
+
+window.addEventListener("resize",()=>{
+
+canvas.width=window.innerWidth
+canvas.height=window.innerHeight
+
+})
+
+</script>
 
 </body>
 </html>
