@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>NTARobloxVN</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 
+/* RESET */
 *{
 margin:0;
 padding:0;
@@ -17,185 +17,234 @@ box-sizing:border-box;
 font-family:'Poppins',sans-serif;
 }
 
+/* BACKGROUND */
 body{
 height:100vh;
 display:flex;
-justify-content:center;
 align-items:center;
+justify-content:center;
 overflow:hidden;
+
+background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#1e3c72,#2a5298);
+background-size:500% 500%;
+animation:bgmove 15s ease infinite;
+}
+
+@keyframes bgmove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+/* HELLO SCREEN */
+#helloScreen{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+display:flex;
+align-items:center;
+justify-content:center;
+
+background:rgba(0,0,0,0.35);
+backdrop-filter:blur(8px);
+
+z-index:9999;
+
+animation:fadeOut 0.8s ease 2s forwards;
+}
+
+.helloBox{
+padding:20px 70px;
+
+font-size:28px;
+font-weight:700;
 color:white;
-background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#3a7bd5);
-background-size:400% 400%;
-animation:gradientMove 12s ease infinite;
+
+border-radius:20px;
+
+background:linear-gradient(135deg,#00c6ff,#0072ff);
+
+box-shadow:
+0 0 30px rgba(0,150,255,0.9),
+0 10px 30px rgba(0,0,0,0.5);
+
+animation:helloPop 0.6s ease;
 }
 
-/* Animated Gradient */
-
-@keyframes gradientMove{
-0%{background-position:0% 50%}
-50%{background-position:100% 50%}
-100%{background-position:0% 50%}
+@keyframes helloPop{
+0%{transform:scale(0.6);opacity:0;}
+100%{transform:scale(1);opacity:1;}
 }
 
-/* Particles */
+@keyframes fadeOut{
+to{opacity:0;visibility:hidden;}
+}
 
+/* PARTICLES */
 #particles{
 position:fixed;
 top:0;
 left:0;
 width:100%;
 height:100%;
-z-index:-1;
+z-index:0;
 }
 
-/* Container */
+/* FLOATING ORBS */
+.orb{
+position:absolute;
+border-radius:50%;
+filter:blur(80px);
+opacity:0.6;
+animation:float 12s infinite ease-in-out;
+}
 
-.container{
-width:90%;
-max-width:520px;
-padding:40px 35px;
-border-radius:22px;
+.orb1{
+width:300px;
+height:300px;
+background:#4facfe;
+top:10%;
+left:15%;
+}
+
+.orb2{
+width:250px;
+height:250px;
+background:#00c6ff;
+bottom:15%;
+right:20%;
+animation-delay:4s;
+}
+
+@keyframes float{
+0%{transform:translateY(0)}
+50%{transform:translateY(-40px)}
+100%{transform:translateY(0)}
+}
+
+/* CARD */
+.card{
+position:relative;
+z-index:2;
+
+text-align:center;
+padding:55px 40px;
+border-radius:25px;
 
 background:rgba(255,255,255,0.08);
 backdrop-filter:blur(18px);
 
 box-shadow:
 0 25px 60px rgba(0,0,0,0.45),
-inset 0 0 20px rgba(255,255,255,0.05);
+0 0 40px rgba(255,255,255,0.1) inset;
 
-text-align:center;
+max-width:420px;
+width:90%;
 
-animation:fadeUp 1s ease;
+transition:transform .3s ease;
 }
 
-/* Fade animation */
+/* GLOW BORDER */
+.card:before{
+content:"";
+position:absolute;
+inset:-2px;
+border-radius:25px;
 
-@keyframes fadeUp{
-from{
-opacity:0;
-transform:translateY(30px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
+background:linear-gradient(45deg,#00eaff,#0066ff,#00eaff);
+background-size:300%;
+
+z-index:-1;
+filter:blur(6px);
+
+animation:borderGlow 6s linear infinite;
 }
 
-/* Title */
+@keyframes borderGlow{
+0%{background-position:0%}
+100%{background-position:300%}
+}
 
-.title{
-font-size:30px;
+/* TITLE */
+h1{
+font-size:28px;
 font-weight:700;
+color:white;
 margin-bottom:10px;
-
-background:linear-gradient(90deg,#00dbff,#a2f7ff);
--webkit-background-clip:text;
-color:transparent;
+text-shadow:0 0 15px rgba(255,255,255,0.6);
 }
 
-/* Subtitle */
-
+/* SUBTITLE */
 .subtitle{
-opacity:.9;
-margin-bottom:28px;
-font-size:15px;
-letter-spacing:1px;
+color:#d0e7ff;
+margin-bottom:35px;
+font-size:14px;
+letter-spacing:2px;
 }
 
-/* Link title */
-
-.link-title{
-font-size:20px;
-font-weight:600;
-margin-bottom:20px;
-}
-
-/* Buttons */
-
+/* BUTTON */
 .btn{
 display:block;
 width:100%;
 padding:16px;
 
-margin:14px 0;
+margin:12px 0;
 
 border-radius:14px;
 text-decoration:none;
-font-weight:600;
-letter-spacing:.6px;
 
-background:linear-gradient(135deg,#00c6ff,#0072ff);
+font-weight:600;
+font-size:15px;
 color:white;
 
-position:relative;
-overflow:hidden;
+background:linear-gradient(135deg,#00c6ff,#0072ff);
 
 box-shadow:
 0 10px 25px rgba(0,0,0,0.35),
-0 0 15px rgba(0,140,255,0.35);
+0 0 15px rgba(0,132,255,0.8);
 
-transition:all .3s ease;
+transition:.3s;
+
+position:relative;
+overflow:hidden;
 }
-
-/* Hover */
 
 .btn:hover{
-transform:scale(1.06);
+transform:translateY(-4px) scale(1.03);
+
+background:linear-gradient(135deg,#38dfff,#1a6cff);
+
 box-shadow:
-0 15px 40px rgba(0,0,0,0.5),
-0 0 25px rgba(0,180,255,0.9);
+0 20px 40px rgba(0,0,0,0.5),
+0 0 35px rgba(0,153,255,1);
 }
 
-/* Ripple effect */
-
-.btn span{
-position:relative;
-z-index:2;
-}
-
-.btn::after{
-content:"";
+/* RIPPLE */
+.ripple{
 position:absolute;
-width:120px;
-height:120px;
-background:rgba(255,255,255,0.4);
 border-radius:50%;
+background:rgba(255,255,255,0.6);
 transform:scale(0);
-opacity:0;
-transition:.6s;
+animation:rippleAnim .6s linear;
+pointer-events:none;
 }
 
-.btn:active::after{
-transform:scale(3);
-opacity:0;
-transition:0s;
+@keyframes rippleAnim{
+to{transform:scale(4);opacity:0;}
 }
 
-/* Floating */
+/* RESPONSIVE */
+@media(max-width:480px){
 
-.container{
-animation:
-fadeUp 1s ease,
-floating 6s ease-in-out infinite;
-}
+.card{padding:45px 28px;}
 
-@keyframes floating{
-0%{transform:translateY(0)}
-50%{transform:translateY(-8px)}
-100%{transform:translateY(0)}
-}
-
-/* Responsive */
-
-@media(max-width:500px){
-
-.title{
-font-size:24px;
-}
+h1{font-size:22px;}
 
 .btn{
-padding:14px;
 font-size:14px;
+padding:15px;
 }
 
 }
@@ -205,87 +254,126 @@ font-size:14px;
 
 <body>
 
+<!-- HELLO SCREEN -->
+<div id="helloScreen">
+<div class="helloBox">HELLO !</div>
+</div>
+
 <canvas id="particles"></canvas>
 
-<div class="container">
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
 
-<div class="title">
-TẤT CẢ NHỮNG GÌ TRÊN VIDEO
-</div>
+<div class="card" id="card">
 
-<div class="subtitle">
-NTARobloxVN
-</div>
+<h1>TẤT CẢ NHỮNG THỨ TRÊN VIDEO :</h1>
 
-<div class="link-title">
-LINK :
-</div>
+<div class="subtitle">NTARobloxVN</div>
 
-<a class="btn" href="https://www.mediafire.com/file/gi82oiy9qk0fyob/Ronix_VN-2.710.706_Up.apk/file" target="_blank">
-<span>CLIENT RONIX VNG ANDROID</span>
+<a class="btn"
+href="https://www.mediafire.com/file/ve89aen8nuyqqd3/Delta+x+VNG+v2.710.apk/file"
+target="_blank">
+DELTA EXECUTOR NEW VERSION
 </a>
 
-<a class="btn" href="https://pastefy.app/bsq32wjA/raw" target="_blank">
-<span>SCRIPT TRONG VID</span>
+<a class="btn"
+href="https://pastefy.app/UxbVWlGF/raw"
+target="_blank">
+SCRIPT TRONG VIDEO :
 </a>
 
 </div>
 
 <script>
 
-/* Simple particles */
+/* PARTICLES */
 
-const canvas = document.getElementById("particles");
-const ctx = canvas.getContext("2d");
+const canvas=document.getElementById("particles");
+const ctx=canvas.getContext("2d");
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
 
 let particles=[];
 
-for(let i=0;i<80;i++){
-
+for(let i=0;i<70;i++){
 particles.push({
 x:Math.random()*canvas.width,
 y:Math.random()*canvas.height,
-r:Math.random()*2,
-dx:(Math.random()-.5)*0.5,
-dy:(Math.random()-.5)*0.5
-})
-
+r:Math.random()*2+1,
+dx:(Math.random()-0.5)*0.5,
+dy:(Math.random()-0.5)*0.5
+});
 }
 
-function animate(){
+function drawParticles(){
 
-ctx.clearRect(0,0,canvas.width,canvas.height)
+ctx.clearRect(0,0,canvas.width,canvas.height);
 
 particles.forEach(p=>{
 
-p.x+=p.dx
-p.y+=p.dy
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+ctx.fillStyle="rgba(255,255,255,0.6)";
+ctx.fill();
 
-if(p.x<0||p.x>canvas.width) p.dx*=-1
-if(p.y<0||p.y>canvas.height) p.dy*=-1
+p.x+=p.dx;
+p.y+=p.dy;
 
-ctx.beginPath()
-ctx.arc(p.x,p.y,p.r,0,Math.PI*2)
-ctx.fillStyle="rgba(255,255,255,0.6)"
-ctx.fill()
+if(p.x<0||p.x>canvas.width) p.dx*=-1;
+if(p.y<0||p.y>canvas.height) p.dy*=-1;
 
-})
+});
 
-requestAnimationFrame(animate)
+requestAnimationFrame(drawParticles);
 
 }
 
-animate()
+drawParticles();
+
+/* 3D CARD */
+
+const card=document.getElementById("card");
+
+document.addEventListener("mousemove",(e)=>{
+
+const x=(window.innerWidth/2 - e.clientX)/25;
+const y=(window.innerHeight/2 - e.clientY)/25;
+
+card.style.transform=`rotateY(${x}deg) rotateX(${y}deg)`;
+
+});
+
+/* RIPPLE BUTTON */
+
+document.querySelectorAll(".btn").forEach(btn=>{
+
+btn.addEventListener("click",function(e){
+
+const circle=document.createElement("span");
+circle.classList.add("ripple");
+
+const rect=this.getBoundingClientRect();
+const size=Math.max(rect.width,rect.height);
+
+circle.style.width=circle.style.height=size+"px";
+circle.style.left=(e.clientX-rect.left-size/2)+"px";
+circle.style.top=(e.clientY-rect.top-size/2)+"px";
+
+this.appendChild(circle);
+
+setTimeout(()=>circle.remove(),600);
+
+});
+
+});
+
+/* RESIZE */
 
 window.addEventListener("resize",()=>{
-
-canvas.width=window.innerWidth
-canvas.height=window.innerHeight
-
-})
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+});
 
 </script>
 
